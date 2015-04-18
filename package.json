@@ -1,6 +1,6 @@
 {
   "name": "gitcli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Command Line tool for searching git repositories.",
   "author": "Muhammad Arslan",
   "engines": {
