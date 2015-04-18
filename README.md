@@ -33,3 +33,5 @@ This is also published on npm-registry. You can also install it by executing fol
 <code>npm install gitcli</code>
 
 Enjoy!
+
+Blog post: http://www.jhear.com/?p=247
