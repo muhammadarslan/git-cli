@@ -1,37 +1,144 @@
-#Introduction
+# GitCLI
 
-I was looking for some ways of writing CLI. Then i found an awesome way of writing cli in Java Script and nodejs as npm module. And this is easy as it writing a simple js app in node app. In my previous post i wrote my Bash Profile, this will definitely be a good addition in my Bash Profile.
+A modern command-line tool for searching GitHub repositories with advanced filtering and detailed repository information.
 
-I created Git Cli module, that you can use to search git repositories, based on keywords, owner and language of repository. Let's jump into the code and have a look how it works.
+## Features
 
-##Run locally
+- 🔍 Advanced repository search with multiple filters
+- 📊 Detailed repository statistics
+- 🎨 Beautiful colored output
+- 🔐 GitHub token support for higher rate limits
+- 📈 Repository metrics and analytics
+- 👥 Contributor information
+- 📝 Language breakdown
+- 🏷️ Topic-based search
+- 📅 Date-based filtering
+- 📦 JSON output support
 
-You just need to have node installed in your machine.
+## Installation
 
-Download the code and enter it into folder. And execute following command.
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/gitcli.git
+cd gitcli
 
-<code>npm install</code>
+# Install dependencies
+npm install
 
-This will download all the dependencies specified in package.json. i.e. commander, request and chalk.
+# Make the CLI executable
+chmod +x gitcli.js
 
-And if you want to install this locally to use gitcli command, execute following command.
+# (Optional) Create a symlink to use it globally
+npm link
+```
 
-Note you need make gitcli.js file executable. 
+## Configuration
 
-you need to execute: <code>chmod 755 gitcli.js</code>
+For higher rate limits and better API access, you can set up a GitHub token:
 
-<code>npm install -g</code>
+1. Create a GitHub personal access token at https://github.com/settings/tokens
+2. Create a `.env` file in the project root:
+```bash
+GITHUB_TOKEN=your_github_token_here
+```
 
-After this you can able to execute command from your shell. Following command will print search result of git-cli repo on github.
+## Usage
 
-<code>gitcli git-cli -o muhammadarslan</code>
+### Basic Search
 
-##Install from npm-registery
+```bash
+# Search for repositories containing "react"
+gitcli react
 
-This is also published on npm-registry. You can also install it by executing following command.
+# Search with multiple keywords
+gitcli "react native" typescript
+```
 
-<code>npm install gitcli</code>
+### Advanced Filters
 
-Enjoy!
+```bash
+# Filter by owner
+gitcli react -o facebook
 
-Blog post: http://www.jhear.com/?p=247
+# Filter by language
+gitcli react -l typescript
+
+# Filter by topic
+gitcli react -t web
+
+# Filter by stars
+gitcli react -s ">1000"
+
+# Filter by forks
+gitcli react -f ">100"
+
+# Filter by creation date
+gitcli react -c ">2023-01-01"
+
+# Filter by last update date
+gitcli react -u ">2023-01-01"
+```
+
+### Interactive Mode
+
+Get detailed repository information including language breakdown and top contributors:
+
+```bash
+gitcli react -i
+```
+
+### JSON Output
+
+Get raw JSON output for programmatic use:
+
+```bash
+gitcli react -j
+```
+
+### Combining Filters
+
+You can combine multiple filters for precise search:
+
+```bash
+# Search for TypeScript React repositories with more than 1000 stars
+gitcli react -l typescript -s ">1000"
+
+# Search for recently updated web frameworks
+gitcli "web framework" -u ">2024-01-01" -s ">5000"
+```
+
+## Output Information
+
+The CLI provides detailed information about each repository:
+
+- Repository name and owner
+- Description
+- Clone URL
+- Stars, forks, and watchers count
+- Repository size
+- Primary language
+- License information
+- Creation and last update dates
+- Repository topics
+- Language breakdown (in interactive mode)
+- Top contributors (in interactive mode)
+
+## Rate Limits
+
+The CLI shows your remaining GitHub API rate limit with each request. To increase the rate limit:
+
+1. Set up a GitHub token as described in the Configuration section
+2. The CLI will automatically use the token for higher rate limits
+
+## Requirements
+
+- Node.js >= 14.0.0
+- npm or yarn
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
